@@ -1,0 +1,54 @@
+.hero {
+  margin-left: auto;
+  margin-right: auto;
+
+  padding-top: 20px;
+  padding-bottom: 40px;
+
+  width: 320px;
+  padding-left: 20px;
+  padding-right: 20px;
+
+  @media screen and (min-width: 768px) {
+    padding-top: 60px;
+    padding-bottom: 60px;
+    width: 768px;
+    padding-left: 32px;
+    padding-right: 32px;
+  }
+
+  @media screen and (min-width: 1280px) {
+    width: 1280px;
+  }
+}
+
+.pop-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+
+  @media screen and (min-width: 768px) {
+    gap: 32px;
+  }
+
+  @media screen and (min-width: 1280px) {
+    column-gap: 16px;
+    row-gap: 32px;
+  }
+}
+
+// .pop-item {
+//   background-color: lightblue;
+//   height: 443;
+//   flex-basis: 100%;
+
+//   @media screen and (min-width: 768px) {
+//     height: 494;
+//     flex-basis: calc((100% - 32px * 1) / 2);
+//   }
+
+//   @media screen and (min-width: 1280px) {
+//     height: 634px;
+//     flex-basis: calc((100% - 16px * 2) / 3);
+//   }
+// }
