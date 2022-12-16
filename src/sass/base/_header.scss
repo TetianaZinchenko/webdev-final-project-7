@@ -27,6 +27,22 @@ header {
   }
 }
 
+.header__title {
+  animation: title 3000ms infinite;
+}
+
+@keyframes title {
+  0% {
+    color: #ff6b08;
+  }
+  50% {
+    color: #ffffff;
+  }
+  100% {
+    color: #ff6b08;
+  }
+}
+
 .lib {
   @media screen and (max-width: 767px) {
     width: 100%;
@@ -88,18 +104,25 @@ header {
 }
 
 .logo__film {
+  fill: #ffffff;
+  stroke: #ffffff;
   animation: logo 3000ms infinite;
 }
 
 @keyframes logo {
   0% {
     transform: scale(1.5);
+    // fill: #ff6b08;
+    stroke: #ff6b08;
   }
   50% {
     transform: scale(1);
+    stroke: #ffffff;
   }
   100% {
     transform: scale(1.5);
+    // fill: #ff6b08;
+    stroke: #ff6b08;
   }
 }
 
