@@ -88,3 +88,13 @@ ul {
 li {
   list-style-type: none;
 }
+
+ul,
+h1,
+h2,
+h3,
+p,
+li {
+  margin: 0;
+  padding: 0;
+}
