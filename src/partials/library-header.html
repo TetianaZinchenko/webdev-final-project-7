@@ -1,19 +1,26 @@
-<header class="lib">
-    <section class="head__menu">
-        <div>
-            <a href="index.html" class="logo"><svg class="logo__film" width="38" height="38">
-                    <use href="/src/img/icon.svg#icon-logo"></use>
-                </svg>
-                <h1>Filmoteka</h1>
-            </a>
-        </div>
-        <nav class="nav__menu">
-            <a class="nav__menu__link" href="index.html">HOME</a>
-            <a class="nav__menu__link__lib" href="library.html">MY LIBRARY</a>
-        </nav>
-    </section>
-    <div class="lib__button">
-        <button id="lib-watched-tab" autofocus type="submit" class="lib__btn">WATCHED</button>
-        <button id="lib-queue-tab" type="submit" class="lib__btn">QUEUE</button>
+<header class="lib container">
+  <section class="head__menu">
+    <div>
+      <a href="index.html" class="logo"
+        ><svg class="logo__film" width="38" height="38">
+          <use href="/src/img/icon.svg#icon-logo"></use>
+        </svg>
+        <h1 class="header__title">Filmoteka</h1>
+      </a>
     </div>
+    <nav class="nav__menu">
+      <a class="nav__menu__link" href="index.html">HOME</a>
+      <a
+        class="nav__menu__link nav__menu__link__lib nav__menu__link--active"
+        href="library.html"
+        >MY LIBRARY</a
+      >
+    </nav>
+  </section>
+  <div class="lib__button">
+    <button id="lib-watched-tab" autofocus type="submit" class="lib__btn">
+      WATCHED
+    </button>
+    <button id="lib-queue-tab" type="submit" class="lib__btn">QUEUE</button>
+  </div>
 </header>
