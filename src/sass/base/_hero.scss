@@ -22,20 +22,20 @@
   }
 }
 
-.pop-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
+// .pop-list {
+//   display: flex;
+//   flex-wrap: wrap;
+//   gap: 20px;
 
-  @media screen and (min-width: 768px) {
-    gap: 32px;
-  }
+//   @media screen and (min-width: 768px) {
+//     gap: 32px;
+//   }
 
-  @media screen and (min-width: 1280px) {
-    column-gap: 16px;
-    row-gap: 32px;
-  }
-}
+//   @media screen and (min-width: 1280px) {
+//     column-gap: 16px;
+//     row-gap: 32px;
+//   }
+// }
 
 // .pop-item {
 //   background-color: lightblue;

@@ -1,8 +1,9 @@
-.footer-section__link {
-  color: #545454;
-  // border-bottom: 1px solid;
+.footer-section__btn {
+  background-color: #f7f7f7;
+  border: none;
   text-decoration: underline;
   cursor: pointer;
+  transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1), visibility 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .footer-section {
@@ -12,6 +13,7 @@
   padding-bottom: 30px;
 
   display: flex;
+
   justify-content: center;
   align-items: center;
   flex-direction: column;

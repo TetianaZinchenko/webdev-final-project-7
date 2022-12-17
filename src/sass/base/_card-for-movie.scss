@@ -64,6 +64,10 @@
 
     &__item {
       flex-basis: calc((100% - 32px * 1) / 2);
+
+      //flex-basis: calc((100% - 32px * 1) / 2);
+      // flex-basis: 280px;
+      cursor: pointer;
     }
   }
 
@@ -103,4 +107,9 @@
     width: 40px;
     height: 20px;
   }
+}
+
+.gallery {
+  display: flex;
+  padding: 10px;
 }
