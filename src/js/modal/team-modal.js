@@ -1,6 +1,6 @@
 const goItBtn = document.querySelector('.footer-section__btn');
 const teamModal = document.querySelector('.backdrop-team');
-const modalBtn = document.querySelector('.modal-btn');
+const modalBtn = document.querySelector('.modal-team-btn');
 
 goItBtn.addEventListener('click', openTeam);
 modalBtn.addEventListener('click', closeTeam);
