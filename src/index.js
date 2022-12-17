@@ -1,5 +1,6 @@
 //FT-10 Реалізувати пошук та відображення фільмів за ключовим словом
 import apiService from './api-service.js';
+import Notiflix from 'notiflix';
 
 const searchForm = document.querySelector('.search-form');
 const createGallery = document.querySelector('.gallery');
@@ -29,8 +30,10 @@ function onSearch(event) {
 
     apiService(searchQuery, page)
         .then(data => {
-            createGallery.innerHTML = '';
-            createGallery.insertAdjacentHTML('beforeend', createMarkup(data.results));
+            if (!data.results.length) {
+                Notiflix.Notify.failure(`Sorry, there are no movies matching your search query. Please try again.`);
+            } else {createGallery.innerHTML = '';
+            createGallery.insertAdjacentHTML('beforeend', createMarkup(data.results));}
         });
 }
 
