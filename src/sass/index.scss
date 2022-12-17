@@ -2,9 +2,13 @@
 @import './base/visually-hidden';
 @import './base/header';
 @import './base/common';
+
 @import './base/hero';
 @import './base/card-for-movie';
 @import './base/modal-movie';
 @import './base/library_container';
 @import './base/footer';
-@import './loader'
+
+@import './base/team-modal';
+
+@import './loader';
