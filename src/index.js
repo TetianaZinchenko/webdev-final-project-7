@@ -1,11 +1,15 @@
 //FT-10 Реалізувати пошук та відображення фільмів за ключовим словом
 import apiService from './api-service.js';
+import apiGenres from './api-genres.js';
 import Notiflix from 'notiflix';
+// console.log(apiService);
+// console.log(apiGenres);
 
 const searchForm = document.querySelector('.search-form');
 const createGallery = document.querySelector('.gallery');
-console.log(createGallery);
-console.log(searchForm);
+
+// console.log(createGallery);
+// console.log(searchForm);
 
 
 searchForm.addEventListener('submit', onSearch);
@@ -26,7 +30,10 @@ function onSearch(event) {
     event.preventDefault();
     searchQuery = event.target.searchQuery.value;
     page = 1;
-    apiService(searchQuery, page).then(data => console.log(data));
+
+    apiGenres().then(data => console.log(data));
+    // apiService(searchQuery, page).then(data => console.log(data.results));
+    apiService(searchQuery, page).then(data => console.log(data.results.map(data => data.genre_ids)));
 
     apiService(searchQuery, page)
         .then(data => {
@@ -40,9 +47,9 @@ function onSearch(event) {
 
 function createMarkup(arr) {
     return arr.map(({
-        poster_path, original_title, genre_name, release_date
+        poster_path, original_title, genre_ids, release_date
     }) => `<div class="video-card" >
-    <div class="thumb" width>
+    <div class="thumb" width='395px'>
         <img src="https://image.tmdb.org/t/p/original${poster_path}" alt="no poster"/>
     </div>
     <div class="info">
@@ -50,7 +57,7 @@ function createMarkup(arr) {
             <b>${original_title}</b>
         </p>
         <p class="info-item">
-            <b>${genre_name}</b>
+            <b>${genre_ids}</b>
             <b>${(new Date(release_date).getFullYear())}</b>
         </p>
     </div>
