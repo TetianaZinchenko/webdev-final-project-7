@@ -1,6 +1,9 @@
 import { fetchPop, fetchGenre } from '../api/fetchPopularMovies';
 
-const popList = document.querySelector('.pop-list');
+// const popList = document.querySelector('.pop-list');
+
+const popList = document.querySelector('.gallery-list');
+
 let page = 1;
 let genres = [];
 
