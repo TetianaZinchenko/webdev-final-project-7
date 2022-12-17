@@ -1,23 +1,33 @@
-<header class="container">
-    <section class="head__menu">
-        <div>
-            <a href="index.html" class="logo"><svg class="logo__film" width="38" height="38">
-                    <use href="/src/img/icon.svg#icon-logo"></use>
-                </svg>
-                <h1>Filmoteka</h1>
-            </a>
-        </div>
-        <nav class="nav__menu">
-            <a class="nav__menu__link__index" href="index.html">HOME</a>
-            <a class="nav__menu__link" href="library.html">MY LIBRARY</a>
-        </nav>
-    </section>
-    <div class="search">
-        <form class="search-form" id="search-form">
-            <input type="text" name="searchQuery" id="search-box" autocomplete="off" placeholder="Movie search" />
-            <button type="submit" class="search_btn"></button>
-        </form>
-        <span class="error-js"></span>
+<header class="header container">
+  <section class="head__menu">
+    <div>
+      <a href="./index.html" class="logo"
+        ><svg class="logo__film" width="38" height="38">
+          <use href="/src/img/icon.svg#icon-logo"></use>
+        </svg>
+        <h1 class="header__title">Filmoteka</h1>
+      </a>
     </div>
-    </div>
+    <nav class="nav__menu">
+      <a
+        class="nav__menu__link nav__menu__link__index nav__menu__link--active"
+        href="./index.html"
+        >HOME</a
+      >
+      <a class="nav__menu__link" href="./library.html">MY LIBRARY</a>
+    </nav>
+  </section>
+  <div class="search">
+    <form class="search-form" id="search-form">
+      <input
+        type="text"
+        name="searchQuery"
+        id="search-box"
+        autocomplete="off"
+        placeholder="Movie search"
+      />
+      <button type="submit" class="search_btn"></button>
+    </form>
+    <span class="error-js"></span>
+  </div>
 </header>
