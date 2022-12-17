@@ -63,8 +63,10 @@
     // max-width: 704px;
 
     &__item {
+      flex-basis: calc((100% - 32px * 1) / 2);
+
       //flex-basis: calc((100% - 32px * 1) / 2);
-      flex-basis: 280px;
+      // flex-basis: 280px;
       cursor: pointer;
     }
   }
@@ -106,7 +108,6 @@
     height: 20px;
   }
 }
-
 
 .gallery {
   display: flex;
