@@ -17,7 +17,6 @@ fetchPop(page).then(onSuccess).catch(onError);
 
 function onSuccess(resp) {
   const arr = resp.data.results;
-  console.log(resp.data);
   let markup = arr.map(el => createMarkup(el)).join('');
   popList.innerHTML = markup;
 
@@ -29,6 +28,17 @@ function onSuccess(resp) {
     centerAlign: true,
   };
   const pagination = new Pagination('pagination', options);
+
+  pagination.on('beforeMove', evt => {
+    const { page } = evt;
+    fetchPop(page)
+      .then(resp => {
+        const arr = resp.data.results;
+        let markup = arr.map(el => createMarkup(el)).join('');
+        popList.innerHTML = markup;
+      })
+      .catch(err => console.log(err));
+  });
 }
 
 function onError(error) {
