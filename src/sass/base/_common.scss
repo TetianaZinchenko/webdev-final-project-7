@@ -23,14 +23,14 @@ body {
     max-width: 767px;
   }
 
-  @media screen and (min-width: 768px) and (max-width: 1199px) {
-    max-width: 1199px;
+  @media screen and (min-width: 768px) and (max-width: 1279px) {
+    max-width: 1279px;
     // margin-top: 60px;
     // padding-left: 32px;
     // padding-right: 32px;
   }
 
-  @media screen and (min-width: 1200px) {
+  @media screen and (min-width: 1280px) {
     max-width: 1920px;
     // margin-top: 60px;
     // padding-left: 32px;
