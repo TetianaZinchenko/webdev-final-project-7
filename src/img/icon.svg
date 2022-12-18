@@ -28,5 +28,9 @@
 <path fill="none" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="2.6667" d="M28 28.001l-5.8-5.8"></path>
 </symbol>
 
+<symbol id="icon-arrow" viewBox="0 0 32 32">
+<path d="M16 2.667l-10 24.387 0.947 0.947 9.053-4 9.053 4 0.947-0.947-10-24.387z"></path>
+</symbol>
+
 </defs>
 </svg>
