@@ -2,8 +2,18 @@
 const BASE_URL = "https://api.themoviedb.org/3/movie/";
 const apiKey = 'f42f2f62d598d39d316744d8859de3e9';
 
-// const idItemGallery = document.querySelector('.gallery-list__item');
-const movieId = 76600; //заменить на idItemGallery.dataset.id
+const galleryListItem = document.querySelector('.gallery-list__item');
+galleryListItem.addEventListener('click', getId);
+
+function getId(evt) {
+    console.log(evt.currentTarget)
+}
+
+
+
+
+
+
 
 
 const listRender = document.querySelector('.movie-detail-info-category-render');
@@ -20,11 +30,20 @@ const modal = document.querySelector('.modal-movie-detail');
 
 galleryItem.addEventListener('click', openModal);
 
+let movieId;
+
+
+// function getIdMovie(evt) {
+//     console.log(evt.target)
+// }  
+
 function openModal(evt) {
     evt.preventDefault();
-    backdrop.classList.toggle("modal—movie-is-hidden")
+    console.dir(evt.target); // тут ищи как получить ИД
 
-    movieDatabaseApi()
+    backdrop.classList.toggle("modal—movie-is-hidden")
+    getIdMovie();
+
     
     document.addEventListener("keydown", checkClick);
     document.addEventListener("click", checkClick);
@@ -88,4 +107,4 @@ async function movieDatabaseApi() {
 }
 
 
-movieDatabaseApi()
+// movieDatabaseApi()
