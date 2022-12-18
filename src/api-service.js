@@ -10,6 +10,3 @@ export default async function apiService(searchQuery, page) {
             return resp.data;
         });
 }
-
-
-// https://api.themoviedb.org/3/genre/movie/list?api_key=f42f2f62d598d39d316744d8859de3e9&language=en-US

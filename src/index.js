@@ -1,7 +1,12 @@
+import './js/modal/team-modal';
+
+import './js/modal/modal-for-movie';
+
 //FT-10 Реалізувати пошук та відображення фільмів за ключовим словом
 import apiService from './api-service.js';
 import apiGenres from './api-genres.js';
 import Notiflix from 'notiflix';
+import genres from './arr-genres.js';
 // console.log(apiService);
 // console.log(apiGenres);
 
@@ -11,18 +16,22 @@ const createGallery = document.querySelector('.gallery');
 // console.log(createGallery);
 // console.log(searchForm);
 
-
 searchForm.addEventListener('submit', onSearch);
 searchForm.addEventListener('input', inputValue);
 
-let searchQuery = '';
+
+// apiGenres().then(data => console.log(data.genres));
+console.log(genres);
+let arrGenres = [];
+
+// let searchQuery = '';
 let page = 1;
 
 function inputValue(event) {
     const searchValue = event.target.value;
     if (!searchValue) {
-        createGallery.innerHTML = '';
-        return;
+    createGallery.innerHTML = '';
+    return;
     }
 }
 
@@ -31,19 +40,25 @@ function onSearch(event) {
     searchQuery = event.target.searchQuery.value;
     page = 1;
 
-    apiGenres().then(data => console.log(data));
-    // apiService(searchQuery, page).then(data => console.log(data.results));
-    apiService(searchQuery, page).then(data => console.log(data.results.map(data => data.genre_ids)));
+
+
+    apiService(searchQuery, page).then(data => console.log(data));
+    // apiGenres().then(data => console.log(data.genres));
 
     apiService(searchQuery, page)
-        .then(data => {
-            if (!data.results.length) {
-                Notiflix.Notify.failure(`Sorry, there are no movies matching your search query. Please try again.`);
-            } else {createGallery.innerHTML = '';
-            createGallery.insertAdjacentHTML('beforeend', createMarkup(data.results));}
-        });
+        .then(data => console.log(data.results));
+    
+    apiService(searchQuery, page).then(data => {
+    if (!data.results.length) {
+        Notiflix.Notify.failure(
+        `Sorry, there are no movies matching your search query. Please try again.`
+        );
+    } else {
+        createGallery.innerHTML = '';
+        createGallery.insertAdjacentHTML('beforeend', createMarkup(data.results));
+    }
+    });
 }
-
 
 function createMarkup(arr) {
     return arr.map(({
@@ -61,5 +76,7 @@ function createMarkup(arr) {
             <b>${(new Date(release_date).getFullYear())}</b>
         </p>
     </div>
-</div>`).join('');
+</div>`
+    )
+    .join('');
 }
