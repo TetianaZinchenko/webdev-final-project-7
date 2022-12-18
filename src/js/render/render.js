@@ -1,17 +1,15 @@
-export function markupCardForMovie(movie){
-    let genres = movie.genres.map(genre => genre.name)
-        .join(", ");
-    let releaseDate = new Date(movie.release_date)
-        .getFullYear();
+export function markupCardForMovie(movie) {
+  let genres = movie.genres.map(genre => genre.name).join(', ');
+  let releaseDate = new Date(movie.release_date).getFullYear();
 
-    return `
+  return `
     <li class="gallery-list__item" data-index="${movie.id}">
         <div class="gallery-thumb">
             <picture>
                 <source srcset="${movie.backdrop_path}" media="(min-width: 1280px)" />
                 <source srcset="${movie.backdrop_path}" media="(min-width: 768px)" />
                 <source srcset="${movie.backdrop_path}" media="(max-width: 767px)" />
-                <img src="${movie.backdrop_path}" alt="" />
+                <img class="gallery-img' src="${movie.backdrop_path}" alt="" />
             </picture>
         </div>
         <div class="movie-info">

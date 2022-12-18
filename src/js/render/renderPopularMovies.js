@@ -53,7 +53,7 @@ function createMarkup({
           <source srcset="https://image.tmdb.org/t/p/w500${poster_path}" media="(min-width: 1280px)" />
           <source srcset="https://image.tmdb.org/t/p/w300${poster_path}" media="(min-width: 768px)" />
           <source srcset="https://image.tmdb.org/t/p/w185${poster_path}" media="(max-width: 767px)" />
-          <img src="https://image.tmdb.org/t/p/w154${poster_path}" alt="" />
+          <img class="gallery-img" src="https://image.tmdb.org/t/p/w154${poster_path}" alt="" />
         </picture> 
       </div>
       <div class="movie-info">
