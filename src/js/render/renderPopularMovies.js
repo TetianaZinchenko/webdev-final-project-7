@@ -1,6 +1,6 @@
 import { fetchPop, fetchGenre } from '../api/fetchPopularMovies';
-
-// const popList = document.querySelector('.pop-list');
+import Pagination from 'tui-pagination';
+import 'tui-pagination/dist/tui-pagination.css';
 
 const popList = document.querySelector('.gallery-list');
 
@@ -17,9 +17,28 @@ fetchPop(page).then(onSuccess).catch(onError);
 
 function onSuccess(resp) {
   const arr = resp.data.results;
-  console.log(arr);
   let markup = arr.map(el => createMarkup(el)).join('');
-  popList.insertAdjacentHTML('afterbegin', markup);
+  popList.innerHTML = markup;
+
+  const options = {
+    totalItems: resp.data.total_results,
+    itemsPerPage: arr.length,
+    visiblePages: 5,
+    page: page,
+    centerAlign: true,
+  };
+  const pagination = new Pagination('pagination', options);
+
+  pagination.on('beforeMove', evt => {
+    const { page } = evt;
+    fetchPop(page)
+      .then(resp => {
+        const arr = resp.data.results;
+        let markup = arr.map(el => createMarkup(el)).join('');
+        popList.innerHTML = markup;
+      })
+      .catch(err => console.log(err));
+  });
 }
 
 function onError(error) {
