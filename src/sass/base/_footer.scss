@@ -1,9 +1,37 @@
+footer {
+  flex-shrink: 0;
+}
+
+main {
+  flex-grow: 1;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+// .footer {
+//   background-color: #f7f7f7;
+// }
+// .footer__container {
+//   color: #545454;
+//   @media screen and (min-width: 768px) {
+//     display: flex;
+//     justify-content: center;
+//     align-items: baseline;
+//   }
+// }
+
 .footer-section__btn {
   background-color: #f7f7f7;
   border: none;
   text-decoration: underline;
   cursor: pointer;
-  transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1), visibility 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    visibility 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .footer-section {

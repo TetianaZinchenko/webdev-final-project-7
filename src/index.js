@@ -3,6 +3,7 @@ import onSwitch from './js/api/theme.js';
 import './js/modal/team-modal';
 
 import './js/modal/modal-for-movie';
+import './js/modal/trailer';
 
 //FT-10 Реалізувати пошук та відображення фільмів за ключовим словом
 import apiService from './api-service.js';
@@ -21,7 +22,6 @@ const createGallery = document.querySelector('.gallery');
 searchForm.addEventListener('submit', onSearch);
 searchForm.addEventListener('input', inputValue);
 
-
 // apiGenres().then(data => console.log(data.genres));
 console.log(genres);
 let arrGenres = [];
@@ -30,42 +30,44 @@ let arrGenres = [];
 let page = 1;
 
 function inputValue(event) {
-    const searchValue = event.target.value;
-    if (!searchValue) {
+  const searchValue = event.target.value;
+  if (!searchValue) {
     createGallery.innerHTML = '';
     return;
-    }
+  }
 }
 
 function onSearch(event) {
-    event.preventDefault();
-    searchQuery = event.target.searchQuery.value;
-    page = 1;
+  event.preventDefault();
+  searchQuery = event.target.searchQuery.value;
+  page = 1;
 
+  apiService(searchQuery, page).then(data => console.log(data));
+  // apiGenres().then(data => console.log(data.genres));
 
+  apiService(searchQuery, page).then(data => console.log(data.results));
 
-    apiService(searchQuery, page).then(data => console.log(data));
-    // apiGenres().then(data => console.log(data.genres));
-
-    apiService(searchQuery, page)
-        .then(data => console.log(data.results));
-    
-    apiService(searchQuery, page).then(data => {
+  apiService(searchQuery, page).then(data => {
     if (!data.results.length) {
-        Notiflix.Notify.failure(
+      Notiflix.Notify.failure(
         `Sorry, there are no movies matching your search query. Please try again.`
-        );
+      );
     } else {
-        createGallery.innerHTML = '';
-        createGallery.insertAdjacentHTML('beforeend', createMarkup(data.results));
+      createGallery.innerHTML = '';
+      createGallery.insertAdjacentHTML('beforeend', createMarkup(data.results));
     }
-    });
+  });
 }
 
 function createMarkup(arr) {
-    return arr.map(({
-        poster_path, original_title, genre_ids, release_date
-    }) => `<div class="video-card" >
+  return arr
+    .map(
+      ({
+        poster_path,
+        original_title,
+        genre_ids,
+        release_date,
+      }) => `<div class="video-card" >
     <div class="thumb" width='395px'>
         <img src="https://image.tmdb.org/t/p/original${poster_path}" alt="no poster"/>
     </div>
@@ -75,7 +77,7 @@ function createMarkup(arr) {
         </p>
         <p class="info-item">
             <b>${genre_ids}</b>
-            <b>${(new Date(release_date).getFullYear())}</b>
+            <b>${new Date(release_date).getFullYear()}</b>
         </p>
     </div>
 </div>`
