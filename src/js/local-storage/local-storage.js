@@ -4,7 +4,7 @@ const localQueueWatchKey = "movie-queue";
 export let movieLocalStorage = {
     watchedArray : localStorageLoad(localStorageWatchKey),
     queueArray : localStorageLoad(localQueueWatchKey),
-    watchedExists : function(id){
+    watchedExists : function(id) {
         return this.indexById(this.watchedArray, id) != -1;
     },
     queueExists : function(id){
@@ -18,7 +18,7 @@ export let movieLocalStorage = {
             this.watchedArray.push(movie);
             localStorageSave(localStorageWatchKey, this.watchedArray);
             return true;
-        }        
+        }
         return false;
     },
     removeWatched : function(id){
@@ -33,7 +33,7 @@ export let movieLocalStorage = {
             this.queueArray.push(movie);
             localStorageSave(localQueueWatchKey, this.queueArray);
             return true;
-        }        
+        }
         return false;
     },
     removeQueue : function(id){

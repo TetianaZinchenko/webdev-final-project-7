@@ -82,6 +82,8 @@
 }
 
 .thumb-movie-poster {
+  position: relative;
+
   @media screen and (min-width: 320px) {
     width: 240px;
     height: 357px;
@@ -100,8 +102,6 @@
 }
 
 .thumb-movie-poster > picture {
-  display: block;
-
   height: 100%;
   width: 100%;
   object-fit: cover;
@@ -153,10 +153,9 @@
 
 .movie-detail-info-category {
   color: #8c8c8c;
-      
 }
-.thumb{
-min-width: 69px;
+.thumb {
+  min-width: 69px;
 }
 
 .list-item {
