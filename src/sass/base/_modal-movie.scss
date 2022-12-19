@@ -10,8 +10,12 @@
 //   overflow-y: scroll;
 // }
 
+
 .backdrop {
-  opacity: 1;
+  @media screen and (max-width: 1279px) {
+    background: rgba($color: #000000, $alpha: 0.25);
+      }
+    opacity: 1;
   position: fixed;
   top: 0;
   left: 0;
@@ -102,6 +106,12 @@
 }
 
 .thumb-movie-poster > picture {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+.thumb-movie-poster > picture > img {
   height: 100%;
   width: 100%;
   object-fit: cover;
