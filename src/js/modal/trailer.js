@@ -1,5 +1,6 @@
 import * as basicLightbox from 'basiclightbox';
-import 'basicLightbox/dist/basicLightbox.min.css';
+// import 'basicLightbox/dist/basicLightbox.min.css';
+
 import axios from 'axios';
 
 let trailer;
@@ -18,22 +19,23 @@ export function closeTrailerByEsc(e) {
   }
 }
 
-const fetchTrailer = async (movieId) => {
+const fetchTrailer = async movieId => {
   try {
-    const {data} = await axios.get(`https://api.themoviedb.org/3/movie/${movieId}/videos?api_key=f42f2f62d598d39d316744d8859de3e9`)
+    const { data } = await axios.get(
+      `https://api.themoviedb.org/3/movie/${movieId}/videos?api_key=f42f2f62d598d39d316744d8859de3e9`
+    );
     return data.results;
   } catch (e) {
     console.error(e);
   }
-}
+};
 
-export const renderTrailer = async (movieId) => {
+export const renderTrailer = async movieId => {
   const trailerBtn = document.querySelector('.btn-trailer');
   let data = await fetchTrailer(movieId);
 
-  const { key } = data.find((t) => t.name.includes('Official'))
+  const { key } = data.find(t => t.name.includes('Official'));
 
   trailerBtn.addEventListener('click', () => creatTrailerLink(key));
-  document.addEventListener('keydown', closeTrailerByEsc)
-}
-
+  document.addEventListener('keydown', closeTrailerByEsc);
+};
