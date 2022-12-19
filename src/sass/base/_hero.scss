@@ -53,3 +53,24 @@
 //     flex-basis: calc((100% - 16px * 2) / 3);
 //   }
 // }
+
+.tui-pagination {
+  margin-top: 52px;
+}
+
+.tui-pagination .tui-is-selected,
+.tui-pagination strong {
+  background: #ff6b01;
+  border-color: #ff6b01;
+}
+
+.tui-pagination .tui-is-selected:hover,
+.tui-pagination .tui-is-selected:focus {
+  background-color: #ff6b01;
+}
+
+.tui-pagination .tui-page-btn:hover,
+.tui-pagination .tui-page-btn:focus {
+  background-color: #ff6b01;
+  color: #ffffff;
+}
