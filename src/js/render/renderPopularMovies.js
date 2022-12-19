@@ -19,11 +19,17 @@ fetchGenre()
 //
 fetchPop(page).then(onSuccess).catch(onError);
 
+//обробка успішної відповіді
+//
 function onSuccess(resp) {
+  //рендер популярних фільмів
+  //
   const arr = resp.data.results;
   let markup = arr.map(el => createMarkup(el)).join('');
   popList.innerHTML = markup;
 
+  //створює інстанс пагінації
+  //
   const options = {
     totalItems: resp.data.total_results,
     itemsPerPage: arr.length,
@@ -33,6 +39,8 @@ function onSuccess(resp) {
   };
   const pagination = new Pagination('pagination', options);
 
+  //додає слухача пагінації і рендерить нові фільми
+  //
   pagination.on('beforeMove', evt => {
     const { page } = evt;
     fetchPop(page)
@@ -45,6 +53,8 @@ function onSuccess(resp) {
   });
 }
 
+//обробка помилки
+//
 function onError(error) {
   console.error(error);
 
@@ -88,7 +98,7 @@ function createMarkup({
           <source srcset="https://image.tmdb.org/t/p/w500${poster_path}" media="(min-width: 1280px)" />
           <source srcset="https://image.tmdb.org/t/p/w300${poster_path}" media="(min-width: 768px)" />
           <source srcset="https://image.tmdb.org/t/p/w185${poster_path}" media="(max-width: 767px)" />
-          <img class="gallery-img" src="https://image.tmdb.org/t/p/w154${poster_path}" alt="" />
+          <img class="gallery-img" src="https://image.tmdb.org/t/p/w154${poster_path}" alt="${title}" />
         </picture> 
       </div>
       <div class="movie-info">
