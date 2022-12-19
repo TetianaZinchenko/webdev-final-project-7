@@ -1,3 +1,30 @@
+footer {
+  flex-shrink: 0;
+}
+
+main {
+  flex-grow: 1;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+// .footer {
+//   background-color: #f7f7f7;
+// }
+// .footer__container {
+//   color: #545454;
+//   @media screen and (min-width: 768px) {
+//     display: flex;
+//     justify-content: center;
+//     align-items: baseline;
+//   }
+// }
+
 .footer-section__btn {
   background-color: #f7f7f7;
   border: none;

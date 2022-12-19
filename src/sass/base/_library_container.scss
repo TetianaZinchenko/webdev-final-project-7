@@ -1,33 +1,59 @@
-.test-card{
-    background-color: #ff6b01;
+// .test-card {
+//   background-color: #ff6b01;
+//   @media screen and (min-width: 320px) {
+//     width: 280px;
+//     height: 398px;
+//   }
+
+//   @media screen and (min-width: 768px) {
+//     width: 336px;
+//     height: 445px;
+//   }
+
+//   @media screen and (min-width: 1280px) {
+//     width: 336px;
+//     height: 445px;
+//   }
+// }
+
+.films-container {
+  // width: 100%;
+
   @media screen and (min-width: 320px) {
-    width: 280px;
-    height: 398px;
+    // width: 320px;
+    // margin: 0 auto;
+    // padding-left: 20px;
+    // padding-right: 20px;
   }
 
   @media screen and (min-width: 768px) {
-
-    width: 336px;
-    height: 445px;
+    // width: 768px;
+    // padding-left: 32px;
+    // padding-right: 32px;
   }
 
   @media screen and (min-width: 1280px) {
-    width: 336px;
-    height: 445px;
+    // width: 1280px;
+    // padding-left: 32px;
+    // padding-right: 32px;
   }
 }
-.films-container{
-  width: 100%;
 
+.films-container {
+  // margin-left: auto;
+  // margin-right: auto;
+  margin: 0 auto;
 
-  @media screen and (min-width: 320px) {
-    width: 320px;
-    margin: 0 auto;
-    padding-left: 20px;
-    padding-right: 20px;
-  }
+  padding-top: 20px;
+  padding-bottom: 40px;
+
+  width: 320px;
+  padding-left: 20px;
+  padding-right: 20px;
 
   @media screen and (min-width: 768px) {
+    padding-top: 60px;
+    padding-bottom: 60px;
     width: 768px;
     padding-left: 32px;
     padding-right: 32px;
@@ -35,43 +61,47 @@
 
   @media screen and (min-width: 1280px) {
     width: 1280px;
-    padding-left: 32px;
-    padding-right: 32px;
   }
 }
 
-.library-movies {
-
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: column;
-  column-gap: 20px;
-
-  align-items: center;
-  width: 100%;
-
-  margin: 0 auto;
-  flex-direction: row;
-  flex-wrap: wrap;
-  gap: 32px;
-  justify-content: space-around;
-  align-items: baseline;
-
+.tui-pagination {
+  margin-top: 40px;
+  margin-bottom: 0;
 
   @media screen and (min-width: 768px) {
-    flex-direction: row;
-    flex-wrap: wrap;
-    gap: 32px;
-    justify-content: space-around;
-    align-items: baseline;
-  }
-
-  @media screen and (min-width: 1280px) {
-    column-gap: 16px;
-    row-gap: 32px;
+    margin-top: 60px;
   }
 }
 
+// .library-movies {
+//   display: flex;
+//   flex-wrap: wrap;
+//   flex-direction: column;
+//   column-gap: 20px;
+
+//   align-items: center;
+//   width: 100%;
+
+//   margin: 0 auto;
+//   flex-direction: row;
+//   flex-wrap: wrap;
+//   gap: 32px;
+//   justify-content: space-around;
+//   align-items: baseline;
+
+//   @media screen and (min-width: 768px) {
+//     flex-direction: row;
+//     flex-wrap: wrap;
+//     gap: 32px;
+//     justify-content: space-around;
+//     align-items: baseline;
+//   }
+
+//   @media screen and (min-width: 1280px) {
+//     column-gap: 16px;
+//     row-gap: 32px;
+//   }
+// }
 
 .default-library-page {
   display: flex;
@@ -120,16 +150,13 @@
   letter-spacing: 0.01em;
 
   .theme-switcher & {
-    color:#ffffff;
-
+    color: #ffffff;
   }
 
   @media screen and (min-width: 768px) {
     font-size: 28px;
   }
 }
-
-
 
 .library-default-film-card {
   margin-bottom: 20px;
@@ -154,7 +181,7 @@
   line-height: 1.33;
   text-transform: uppercase;
 
-  color:#000000;
+  color: #000000;
   transition: color 0.5s ease-in-out;
   @media screen and (min-width: 1280px) {
     font-size: 16px;
@@ -162,7 +189,7 @@
   }
 
   .theme-switcher & {
-    color:#ffffff;
+    color: #ffffff;
   }
 }
 
@@ -171,7 +198,7 @@
   font-size: 12px;
   line-height: 1.33;
 
-  color: #ff6b01;;
+  color: #ff6b01;
 
   @media screen and (min-width: 1280px) {
     font-size: 14px;
@@ -184,7 +211,7 @@
   font-size: 12px;
   line-height: 1.33;
 
-  color: #ff6b01;;
+  color: #ff6b01;
 
   @media screen and (min-width: 1280px) {
     font-size: 14px;
@@ -198,4 +225,3 @@
   padding-top: 8px;
   width: 200;
 }
-
