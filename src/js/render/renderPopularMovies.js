@@ -64,7 +64,10 @@ function createMarkup({
     genresName.push(reqGenre.name);
   }
   if (genresName.length > 2) {
-    genresName = genresName.slice(0, 1);
+    genresName = genresName.slice(0, 2);
+    genresName.push('Other');
+  } else if (genresName.length < 1) {
+    genresName.push('Other');
   }
   return `<li class="gallery-list__item" data-id="${id}">
       <div class="gallery-thumb">
@@ -78,7 +81,7 @@ function createMarkup({
       <div class="movie-info">
         <h2 class="movie-info__name">${title}</h2>
         <p class="movie-info__about">
-          ${genresName} | ${release_date.substr(
+          ${genresName.join(', ')} | ${release_date.substr(
     0,
     4
   )} <span class="movie-info__rate">${vote_average.toFixed(1)}</span>
