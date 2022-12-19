@@ -26,8 +26,38 @@
         autocomplete="off"
         placeholder="Movie search"
       />
-      <button type="submit" class="search_btn"></button>
+      <button type="submit" class="search_btn">
+        <svg class="icon-search" width="12" height="12">
+          <use href="/src/img/icon.svg#icon-search"></use>
+        </svg>
+      </button>
     </form>
     <span class="error-js"></span>
+  </div>
+  <div class="toolbar">
+    <div class="theme-switch">
+      <svg class="theme-switch__icon" role="img" width="10" height="10">
+        <use href="/src/img/icon.svg#icon-sun"></use>
+      </svg>
+      <div class="theme-switch__control">
+        <input
+          class="theme-switch__toggle"
+          type="checkbox"
+          name="theme"
+          id="theme-switch-toggle"
+        />
+        <label
+          aria-hidden="true"
+          class="theme-switch__track"
+          for="theme-switch-toggle"
+        >
+        </label>
+        <div aria-hidden="true" class="theme-switch__marker"></div>
+      </div>
+
+      <svg class="theme-switch__icon" width="10" height="10">
+        <use href="/src/img/icon.svg#icon-moon"></use>
+      </svg>
+    </div>
   </div>
 </header>

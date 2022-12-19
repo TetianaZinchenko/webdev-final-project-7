@@ -281,19 +281,28 @@
 }
 
 .search_btn {
-  width: 15px;
-  height: 15px;
+  display: block;
+
+  width: 12px;
+  height: 12px;
   background-color: hsla(0, 0%, 100%, 0);
-  background-image: url('/src/img/search.png');
-  background-repeat: no-repeat;
+  // background-image: url('/src/img/search.png');
+  // background-repeat: no-repeat;
   border: none;
-  margin-left: -15px;
+  margin-left: -17px;
 
   @media screen and (max-width: 767px) {
     margin-top: 20px;
   }
 
+  stroke: #ffffff;
   cursor: pointer;
+  margin-bottom: 6px;
+}
+
+.search_btn:hover,
+.search_btn:focus {
+  stroke: #ff6b08;
 }
 
 #search-box {
