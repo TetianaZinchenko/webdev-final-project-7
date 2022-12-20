@@ -56,7 +56,7 @@ function onSuccess(resp) {
 //обробка помилки
 //
 function onError(error) {
-  console.error(error);
+  // console.error(error);
 
   popList.insertAdjacentHTML(
     'beforebegin',
