@@ -1,3 +1,6 @@
+import './js/modal/team-modal';
+import onSwitch from './js/api/theme.js';
+
 import { movieLocalStorage } from './js/local-storage/local-storage.js';
 import { markupCardForMovie } from './js/render/render.js';
 
