@@ -1,0 +1,218 @@
+.authorization {
+    display: none;
+}
+
+.authorization-owerlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(37, 16, 16, 0.493);
+    backdrop-filter: blur(1px);
+    width: 100vw;
+    height: 100vh;
+    z-index: 100;
+}
+
+.authorization-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    padding: 100px 70px;
+
+    background-image: url('/src/img/bg/bg_authorization_form.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+    .authorization-container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100%;
+            height: 100%;
+            padding: 60px 30px;
+    
+            background-image: url('/src/img/bg/bg_authorization_form.jpg');
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        .close-form-btn {
+            position: absolute;
+            right: 16px;
+            top: 16px;
+            width: 30px;
+            height: 30px;
+            border: none;
+            cursor: pointer;
+            outline: none;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #e9690ea9;
+            transition-property: opacity, background-color, fill, visibility, border-color;
+            transition-duration: 250ms;
+            transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+            fill: #FFFFFF;
+            border-color: #FFFFFF;
+    
+            &:hover,
+            &:focus {
+                fill: #FF6B01;
+                border: 2px solid #FF6B01;
+                transition-property: opacity, background-color, fill, visibility,
+                    border-color;
+                transition-duration: 250ms;
+                transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+            }
+        }
+    
+        .authorization-form__title {
+            display: block;
+        }
+    
+    
+        .authorization-form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+    
+            width: 100%;
+            height: 100%;
+        }
+    
+    
+    
+        .authorization-input-wrap {
+            width: 100%;
+        }
+
+        .authorization-form__input {
+            height: 50px;
+            width: 100%;
+            font-size: 24px;
+            outline: 0;
+            border: 2px solid #FFFFFF;
+            background-color: transparent;
+            padding: 10px;
+    
+            color: #b8b8b8;
+        }
+    
+        .authorization-form__input:not(:last-child) {
+            margin-bottom: 10px;
+        }
+    
+    
+        .authorization-form__input::placeholder {
+            color: #b8b8b8;
+        }
+    
+        .authorization-form__btn-wrap {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+    
+    
+        .authorization-form__btn {
+            display: block;
+            flex-basis: calc((100% - 10px) / 2);
+            height: 44px;
+            padding: 0;
+            margin: 0;
+    
+            background: #FF6B01;
+            border-radius: 5px;
+            border: 0;
+    
+            font-family: 'Roboto';
+            font-style: normal;
+            font-weight: 500;
+            font-size: 12px;
+            line-height: 16px;
+    
+            color: #ffffff;
+            transition: background-color 500ms ease, border 500ms ease;
+        }
+
+
+
+@media screen and (min-width: 768px) {
+    .authorization-form__btn {
+        flex-basis: 150px;
+        // width: 150px;
+    }
+    
+    .authorization-container {
+        width: 500px;
+        height: 500px; 
+     }
+
+    .authorization-form__input:not(:last-child) {
+         margin-bottom: 15px;
+    }
+
+    .authorization-form__input {
+        display: block;
+        width: 350px;
+        margin: 0 auto;
+    }
+}
+
+
+
+@media screen and (min-width: 1280px) {
+    .authorization-form__btn {
+        flex-basis: 150px;
+    }
+    
+    .authorization-container {
+        width: 600px;
+        height: 700px; 
+     }
+
+    .authorization-form__input:not(:last-child) {
+         margin-bottom: 20px;
+    }
+
+    .authorization-form__input {
+        display: block;
+        width: 450px;
+        margin: 0 auto;
+    }
+}
+
+
+
+.authorization-form__btn.singup {
+    background-color: transparent;
+    border: 1px solid #ffffff;
+
+
+    transition: background-color 500ms ease, border 500ms ease;
+}
+
+
+.authorization-form__btn.singup:hover,
+.authorization-form__btn.singup:focus {
+    background-color: #FF6B01;
+    border: 0;
+}
+
+.authorization-form__btn.singup:hover~.authorization-form__btn,
+.authorization-form__btn.singup:focus~.authorization-form__btn {
+    background-color: transparent;
+    border: 1px solid #ffffff;
+}
