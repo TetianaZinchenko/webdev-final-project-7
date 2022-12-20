@@ -1,5 +1,6 @@
 // данные для запроса
 import { renderTrailer, closeTrailerByEsc } from './trailer';
+import { movieLocalStorage } from '../local-storage/local-storage.js';
 
 const BASE_URL = 'https://api.themoviedb.org/3/movie/';
 const apiKey = 'f42f2f62d598d39d316744d8859de3e9';
@@ -16,6 +17,30 @@ const modal = document.querySelector('.modal-movie-detail');
 const about = document.querySelector('.about-desc');
 const title = document.querySelector('.movie-title');
 const posterImg = document.querySelector('.thumb-movie-poster');
+
+// buttons functionality
+let selectedMovie = { id: 0 };
+let modalButtonsContainer = document.querySelector('.movie-btn-container');
+export let buttonAddWatch = modalButtonsContainer.children[0];
+export let buttonAddQueue = modalButtonsContainer.children[1];
+
+buttonAddWatch.addEventListener('click', event => {
+  if (movieLocalStorage.watchedExists(selectedMovie.id)) {
+    movieLocalStorage.removeWatched(selectedMovie.id);
+  } else {
+    movieLocalStorage.addWatched(selectedMovie);
+  }
+  redrawButtonText();
+});
+
+buttonAddQueue.addEventListener('click', event => {
+  if (movieLocalStorage.queueExists(selectedMovie.id)) {
+    movieLocalStorage.removeQueue(selectedMovie.id);
+  } else {
+    movieLocalStorage.addQueue(selectedMovie);
+  }
+  redrawButtonText();
+});
 
 //получаем ИД фильма
 function getId(evt) {
@@ -34,9 +59,8 @@ async function openModal(evt) {
   }
   backdrop.classList.toggle('modal—movie-is-hidden'); //меняет видимость модалки
 
-
-  let data = await movieDatabaseApi(movieId); //отправляет запрос по ИД для получения данных о фильме
-  createMarkup(data);
+  selectedMovie = await movieDatabaseApi(movieId); //отправляет запрос по ИД для получения данных о фильме
+  createMarkup(selectedMovie);
 
   await renderTrailer(movieId);
 
@@ -89,9 +113,7 @@ function createMarkup(data) {
   const genresArr = data.genres;
   const genres = genresArr.map(genre => genre.name).join(', ');
 
-
-
-    renderDetailInfo.innerHTML = `<table class="detail-info-movie">
+  renderDetailInfo.innerHTML = `<table class="detail-info-movie">
               <tr>
                 <td class="category-item">Vote / Votes</td>
                 <td><span class="vote">${data.vote_average}</span> / <span class="votes">${data.vote_count}</span></td>
@@ -108,15 +130,22 @@ function createMarkup(data) {
                 <td class="category-item ">Genre</td>
                 <td>${genres}</td>
               </tr>
-            </table>`
+            </table>`;
 
   about.innerHTML = `<p class="about-desc">
         ${data.overview}
       </p>`;
 
+  redrawButtonText(data.id);
+}
 
-
-
+export function redrawButtonText() {
+  buttonAddWatch.textContent = movieLocalStorage.watchedExists(selectedMovie.id)
+    ? 'remove from watched'
+    : 'add to watched';
+  buttonAddQueue.textContent = movieLocalStorage.queueExists(selectedMovie.id)
+    ? 'remove from queue'
+    : 'add to queue';
 }
 
 //закрытие модалки и удаление слушателей
@@ -126,13 +155,13 @@ function checkClickBtn() {
 }
 
 function checkClick(evt) {
-  if ( evt.target.className === 'backdrop' ) {
+  if (evt.target.className === 'backdrop') {
     backdrop.classList.toggle('modal—movie-is-hidden');
     removeEventListener();
     return;
   }
-  console.log(evt.code)
-   if (evt.code === 'Escape' ) {
+  console.log(evt.code);
+  if (evt.code === 'Escape') {
     backdrop.classList.toggle('modal—movie-is-hidden');
     removeEventListener();
   }

@@ -5,3 +5,4 @@ import './js/modal/team-modal';
 
 import './js/modal/modal-for-movie';
 import './js/modal/trailer';
+import './js/loader/loader'
