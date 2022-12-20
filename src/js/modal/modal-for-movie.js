@@ -57,6 +57,10 @@ async function openModal(evt) {
   if (!movieId) {
     return;
   }
+
+  document.body.style.maxHeight = '100vh';
+  document.body.style.overflow = 'hidden';
+
   backdrop.classList.toggle('modal—movie-is-hidden'); //меняет видимость модалки
 
   selectedMovie = await movieDatabaseApi(movieId); //отправляет запрос по ИД для получения данных о фильме
@@ -171,4 +175,7 @@ function removeEventListener() {
   document.removeEventListener('keydown', checkClick);
   document.removeEventListener('click', checkClick);
   closeModalMovieBtn.removeEventListener('click', checkClickBtn);
+
+  document.body.style.maxHeight = '';
+  document.body.style.overflow = '';
 }
