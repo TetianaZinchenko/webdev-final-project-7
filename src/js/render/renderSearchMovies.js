@@ -1,68 +1,107 @@
 //FT-10 Реалізувати пошук та відображення фільмів за ключовим словом
 import { apiService, apiGenres } from '../api/apiSearchMovies';
+import { onError } from './renderPopularMovies';
+import Pagination from 'tui-pagination';
 
 const searchForm = document.querySelector('.search-form');
 const createGallery = document.querySelector('.gallery-list');
-const span = document.querySelector('.error-js');
+const spanForm = document.querySelector('.error-js');
 
 searchForm.addEventListener('submit', onSearch);
 searchForm.addEventListener('input', inputValue);
 
 let page = 1;
-let genres = [];
+// let allGenres = [];
 
 apiGenres()
-    .then(data => {
-        genres = data;
-    })
-    .catch(err => console.log(err));
+  .then(data => {
+    allGenres = data;
+  })
+  .catch(err => console.log(err));
 
 function inputValue(event) {
-    const searchValue = event.target.value;
-    if (!searchValue) {
-        createGallery.innerHTML = '';
-        return;
-    }
+  const searchValue = event.target.value;
+  if (!searchValue) {
+    createGallery.innerHTML = '';
+    return;
+  }
 }
 
 function onSearch(event) {
-    event.preventDefault();
-    searchQuery = event.target.searchQuery.value;
-    page = 1;
-    apiService(searchQuery, page)
-        .then(data => {
-            if (!data.results.length) {
-                span.insertAdjacentHTML('beforeend', `Search result not successful. Enter the correct movie name and`);
-                setTimeout(() => {
-                    span.textContent = ' ';
-                    event.target.reset();
-                }, 1500);
-                return;
-            } else {
-                createGallery.innerHTML = '';
-                createGallery.insertAdjacentHTML('beforeend', data.results.map(element => createMarkup(element)).join(''));
-            }
-            });
+  event.preventDefault();
+  const searchQuery = event.target.searchQuery.value;
+  page = 1;
+  apiService(searchQuery, page).then(data => console.log(data));
+  apiService(searchQuery, page).then(data => {
+    if (!data.results.length) {
+      spanForm.insertAdjacentHTML(
+        'beforeend',
+        `Search result not successful. Enter the correct movie name and`
+      );
+      setTimeout(() => {
+        spanForm.textContent = ' ';
+        event.target.reset();
+      }, 1500);
+      return;
+    } else {
+      createGallery.innerHTML = '';
+      createGallery.insertAdjacentHTML(
+        'beforeend',
+        data.results.map(element => createMarkup(element)).join('')
+      );
+
+      const options = {
+        totalItems: data.total_results,
+        itemsPerPage: data.results.length,
+        visiblePages: 5,
+        page: page,
+        centerAlign: true,
+      };
+      const pagination = new Pagination('pagination', options);
+
+      pagination.on('beforeMove', event => {
+        const { page } = event;
+        apiService(searchQuery, page)
+          .then(data => {
+            createGallery.innerHTML = '';
+            createGallery.insertAdjacentHTML(
+              'beforeend',
+              data.results.map(element => createMarkup(element)).join('')
+            );
+          })
+          .catch(err => console.log(err));
+      });
+    }
+  });
+}
+
+// onError();
+
+function convertGenresToString(genre_ids) {
+  let genresName = [];
+  for (let oneGenreId of genre_ids) {
+    let requiredGenre = allGenres.find(genre => genre.id === oneGenreId);
+    genresName.push(requiredGenre.name);
+  }
+  if (genresName.length > 2) {
+    genresName = genresName.slice(0, 2);
+    genresName.push('Other');
+  } else if (!genresName.length) {
+    genresName.push('Other');
+  }
+  return genresName.join(', ');
 }
 
 function createMarkup({
-    poster_path,
-    title,
-    genre_ids,
-    id,
-    release_date,
-    vote_average }) {
-    let genresName = [];
-    for (let genre_id of genre_ids) {
-    let reqGenre = genres.find(genre => genre.id === genre_id);
-    genresName.push(reqGenre.name);
-    }
-    if (!genresName.length) {
-        genresName = 'No genre';
-    } else if (genresName.length > 2){
-    genresName = genresName.slice(0, 1);
-    }
-    return `<li class="gallery-list__item" data-id="${id}">
+  poster_path,
+  title,
+  genre_ids,
+  id,
+  release_date,
+  vote_average,
+}) {
+  let genres = convertGenresToString(genre_ids);
+  return `<li class="gallery-list__item" data-id="${id}">
     <div class="gallery-thumb">
         <picture>
         <source srcset="https://image.tmdb.org/t/p/w500${poster_path}" media="(min-width: 1280px)" />
@@ -74,7 +113,11 @@ function createMarkup({
     <div class="movie-info">
         <h2 class="movie-info__name">${title}</h2>
         <p class="movie-info__about">
-        ${genresName} | ${(new Date(release_date).getFullYear())} <span class="movie-info__rate">${vote_average.toFixed(1)}</span>
+        ${genres} | ${new Date(
+    release_date
+  ).getFullYear()} <span class="movie-info__rate">${vote_average.toFixed(
+    1
+  )}</span>
         </p>
     </div>
     </li>`;
