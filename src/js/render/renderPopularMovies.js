@@ -56,8 +56,9 @@ function onSuccess(resp) {
 
 //обробка помилки
 //
-export function onError(error) {
-  console.error(error);
+
+function onError(error) {
+  // console.error(error);
 
   heroSection.innerHTML = `<p style="margin: 0 auto; text-align: center; color: #545454; font-size: 18px;">Oops..something went wrong. Please try again later.</p>`;
 }
