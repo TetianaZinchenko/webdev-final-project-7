@@ -3,6 +3,7 @@ import Pagination from 'tui-pagination';
 import 'tui-pagination/dist/tui-pagination.css';
 
 const popList = document.querySelector('.gallery-list');
+const heroSection = document.querySelector('.hero');
 
 let page = 1;
 let allGenres = [];
@@ -58,7 +59,7 @@ function onSuccess(resp) {
 export function onError(error) {
   console.error(error);
 
-  popList.innerHTML = `<p style="margin: 0 auto; text-align: center; color: #545454; font-size: 18px;">Oops..something went wrong. Please try again later.</p>`;
+  heroSection.innerHTML = `<p style="margin: 0 auto; text-align: center; color: #545454; font-size: 18px;">Oops..something went wrong. Please try again later.</p>`;
 }
 
 //перетворює в стрінгу масив жанрів що приходить у вигляді кодів, для вставки в макет
@@ -78,6 +79,27 @@ function convertGenresToString(genre_ids) {
   return genresName.join(', ');
 }
 
+//форматує рік і підставляє заглушку
+//
+function formatingYear(release_date) {
+  if (!release_date) {
+    return `----`;
+  }
+  return `${release_date.substr(0, 4)}`;
+}
+
+function formatingPoster(poster_path, title) {
+  if (!poster_path) {
+    return `<img class="gallery-img" src="https://www.edu.goit.global/_next/image?url=https%3A%2F%2Fs3.eu-north-1.amazonaws.com%2Flms.goit.files%2F0618d8e0-2652-3e30-ae44-fd6ff17d55a1.png&w=3840&q=75" style="object-fit: contain;" alt="${title}" />`;
+  }
+  return `<picture>
+          <source srcset="https://image.tmdb.org/t/p/w500${poster_path}" media="(min-width: 1280px)" />
+          <source srcset="https://image.tmdb.org/t/p/w300${poster_path}" media="(min-width: 768px)" />
+          <source srcset="https://image.tmdb.org/t/p/w185${poster_path}" media="(max-width: 767px)" />
+          <img class="gallery-img" src="https://image.tmdb.org/t/p/w154${poster_path}" alt="${title}" />
+        </picture>`;
+}
+
 //створює макет карточки одного фільму
 //
 function createMarkup({
@@ -89,22 +111,18 @@ function createMarkup({
   release_date,
 }) {
   let genres = convertGenresToString(genre_ids);
+  let year = formatingYear(release_date);
+  let poster = formatingPoster(poster_path, title);
   return `<li class="gallery-list__item" data-id="${id}">
       <div class="gallery-thumb">
-        <picture>
-          <source srcset="https://image.tmdb.org/t/p/w500${poster_path}" media="(min-width: 1280px)" />
-          <source srcset="https://image.tmdb.org/t/p/w300${poster_path}" media="(min-width: 768px)" />
-          <source srcset="https://image.tmdb.org/t/p/w185${poster_path}" media="(max-width: 767px)" />
-          <img class="gallery-img" src="https://image.tmdb.org/t/p/w154${poster_path}" alt="${title}" />
-        </picture> 
+        ${poster} 
       </div>
       <div class="movie-info">
         <h2 class="movie-info__name">${title}</h2>
         <p class="movie-info__about">
-          ${genres} | ${release_date.substr(
-    0,
-    4
-  )} <span class="movie-info__rate">${vote_average.toFixed(1)}</span>
+          ${genres} | ${year} <span class="movie-info__rate">${vote_average.toFixed(
+    1
+  )}</span>
         </p>
       </div>
     </li>`;
