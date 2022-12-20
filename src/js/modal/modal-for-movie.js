@@ -14,7 +14,6 @@ const backdrop = document.querySelector('.backdrop');
 const modal = document.querySelector('.modal-movie-detail');
 
 // елементы для создания разметки
-const listRender = document.querySelector('.movie-detail-info-category-render');
 const about = document.querySelector('.about-desc');
 const title = document.querySelector('.movie-title');
 const posterImg = document.querySelector('.thumb-movie-poster');
@@ -82,7 +81,7 @@ async function movieDatabaseApi(movieId) {
     console.log(error);
   }
 }
-
+const renderDetailInfo = document.querySelector('.render-detail-info');
 function createMarkup(data) {
   posterImg.innerHTML = `
         <picture>
@@ -114,12 +113,25 @@ function createMarkup(data) {
   const genresArr = data.genres;
   const genres = genresArr.map(genre => genre.name).join(', ');
 
-  const markupList = `<li class="list-item"><span class="vote">${data.vote_average}</span> / <span class="votes">${data.vote_count}</span></li>
-        <li class="list-item">${data.popularity}</li>
-        <li class="list-item">${data.original_title}</li>
-        <li class="list-item">${genres}</li>`;
+  renderDetailInfo.innerHTML = `<table class="detail-info-movie">
+              <tr>
+                <td class="category-item">Vote / Votes</td>
+                <td><span class="vote">${data.vote_average}</span> / <span class="votes">${data.vote_count}</span></td>
+              </tr>
+              <tr>
+                <td class="category-item ">Popularity</td>
+                <td >${data.popularity}</td>
+              </tr>
+              <tr>
+                <td class="category-item ">Original Title</td>
+                <td>${data.original_title}</td>
+              </tr>
+              <tr>
+                <td class="category-item ">Genre</td>
+                <td>${genres}</td>
+              </tr>
+            </table>`;
 
-  listRender.innerHTML = markupList;
   about.innerHTML = `<p class="about-desc">
         ${data.overview}
       </p>`;
@@ -143,7 +155,13 @@ function checkClickBtn() {
 }
 
 function checkClick(evt) {
-  if (evt.code === 'Escape' || evt.target.className === 'backdrop') {
+  if (evt.target.className === 'backdrop') {
+    backdrop.classList.toggle('modal—movie-is-hidden');
+    removeEventListener();
+    return;
+  }
+  console.log(evt.code);
+  if (evt.code === 'Escape') {
     backdrop.classList.toggle('modal—movie-is-hidden');
     removeEventListener();
   }
@@ -151,7 +169,6 @@ function checkClick(evt) {
 
 function removeEventListener() {
   document.removeEventListener('keydown', checkClick);
-  document.removeEventListener('keydown', closeTrailerByEsc);
   document.removeEventListener('click', checkClick);
   closeModalMovieBtn.removeEventListener('click', checkClickBtn);
 }
