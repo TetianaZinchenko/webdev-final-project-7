@@ -1,38 +1,183 @@
 .header {
-  @media screen and (max-width: 767px) {
-    width: 100%;
-    height: 230px;
-    background-image: url('/src/img/bg/background_sd.jpg');
-    background-size: cover;
-    background-position: center center;
-    background-repeat: no-repeat;
+  background-repeat: no-repeat;
+  background-position: center top;
+  background-size: 100%;
 
-    padding-left: 20px;
-    padding-right: 20px;
+  background-image: linear-gradient(
+      to right,
+      rgba(0, 0, 0, 0.56),
+      rgba(0, 0, 0, 0.56)
+    ),
+    url(../img/bg-header/bg-mob-320@1x.jpg);
+
+  @media (min-device-pixel-ratio: 2),
+    (min-resolution: 192dpi),
+    (min-resolution: 2dppx) {
+    background-image: linear-gradient(
+        to right,
+        rgba(0, 0, 0, 0.56),
+        rgba(0, 0, 0, 0.56)
+      ),
+      url(../img/bg-header/bg-mob-640@2x.jpg);
+  }
+
+  @media screen and (min-width: 768px) {
+    background-image: linear-gradient(
+        to right,
+        rgba(0, 0, 0, 0.56),
+        rgba(0, 0, 0, 0.56)
+      ),
+      url(../img/bg-header/bg-tab-768@1x.jpg);
+
+    @media (min-device-pixel-ratio: 2),
+      (min-resolution: 192dpi),
+      (min-resolution: 2dppx) {
+      background-image: linear-gradient(
+          to right,
+          rgba(0, 0, 0, 0.56),
+          rgba(0, 0, 0, 0.56)
+        ),
+        url(../img/bg-header/bg-tab-1536@2x.jpg);
+    }
+  }
+
+  @media screen and (min-width: 1280px) {
+    background-image: linear-gradient(
+        to right,
+        rgba(0, 0, 0, 0.56),
+        rgba(0, 0, 0, 0.56)
+      ),
+      url(../img/bg-header/bg-desk-1280@1x.jpg);
+
+    @media (min-device-pixel-ratio: 2),
+      (min-resolution: 192dpi),
+      (min-resolution: 2dppx) {
+      background-image: linear-gradient(
+          to right,
+          rgba(0, 0, 0, 0.56),
+          rgba(0, 0, 0, 0.56)
+        ),
+        url(../img/bg-header/bg-desk-2560@2x.jpg);
+    }
+  }
+}
+
+.lib {
+  background-repeat: no-repeat;
+  background-position: center top;
+  background-size: 100%;
+
+  background-image: linear-gradient(
+      to right,
+      rgba(0, 0, 0, 0.56),
+      rgba(0, 0, 0, 0.56)
+    ),
+    url(../img/bg-header/bg2-mob-320@1x.jpg);
+
+  @media (min-device-pixel-ratio: 2),
+    (min-resolution: 192dpi),
+    (min-resolution: 2dppx) {
+    background-image: linear-gradient(
+        to right,
+        rgba(0, 0, 0, 0.56),
+        rgba(0, 0, 0, 0.56)
+      ),
+      url(../img/bg-header/bg2-mob-640@2x.jpg);
+  }
+
+  @media screen and (min-width: 768px) {
+    background-image: linear-gradient(
+        to right,
+        rgba(0, 0, 0, 0.56),
+        rgba(0, 0, 0, 0.56)
+      ),
+      url(../img/bg-header/bg2-tab-768@1x.jpg);
+
+    @media (min-device-pixel-ratio: 2),
+      (min-resolution: 192dpi),
+      (min-resolution: 2dppx) {
+      background-image: linear-gradient(
+          to right,
+          rgba(0, 0, 0, 0.56),
+          rgba(0, 0, 0, 0.56)
+        ),
+        url(../img/bg-header/bg2-tab-1536@2x.jpg);
+    }
+  }
+
+  @media screen and (min-width: 1280px) {
+    background-image: linear-gradient(
+        to right,
+        rgba(0, 0, 0, 0.56),
+        rgba(0, 0, 0, 0.56)
+      ),
+      url(../img/bg-header/bg2-desk-1280@1x.jpg);
+
+    @media (min-device-pixel-ratio: 2),
+      (min-resolution: 192dpi),
+      (min-resolution: 2dppx) {
+      background-image: linear-gradient(
+          to right,
+          rgba(0, 0, 0, 0.56),
+          rgba(0, 0, 0, 0.56)
+        ),
+        url(../img/bg-header/bg2-desk-2560@2x.jpg);
+    }
+  }
+}
+
+// .main-container {
+//   // padding-top: 30px;
+//   padding-bottom: 40px;
+
+//   @media screen and (min-width: (768px)) {
+//     padding-bottom: 81px;
+//   }
+// }
+
+// .lib-container {
+//   // padding-bottom: 62px;
+
+//   @media screen and (min-width: (768px)) {
+//     padding-bottom: 57px;
+//   }
+// }
+
+.header {
+  @media screen and (max-width: 767px) {
+    // width: 100%;
+    height: 230px;
+    // background-image: url('/src/img/bg/background_sd.jpg');
+    // background-size: cover;
+    // background-position: center center;
+    // background-repeat: no-repeat;
+
+    // padding-left: 20px;
+    // padding-right: 20px;
   }
 
   @media screen and (min-width: 768px) and (max-width: 1199px) {
-    width: 100%;
+    // width: 100%;
     height: 216px;
-    background-image: url('/src/img/bg/background_md.jpg');
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-size: cover;
+    // background-image: url('/src/img/bg/background_md.jpg');
+    // background-repeat: no-repeat;
+    // background-position: center center;
+    // background-size: cover;
 
-    padding-left: 32px;
-    padding-right: 32px;
+    // padding-left: 32px;
+    // padding-right: 32px;
   }
 
   @media screen and (min-width: 1200px) {
-    margin: 0 auto;
+    // margin: 0 auto;
     height: 216px;
-    background-image: url('/src/img/bg/background_ld.jpg');
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-size: cover;
+    // background-image: url('/src/img/bg/background_ld.jpg');
+    // background-repeat: no-repeat;
+    // background-position: center center;
+    // background-size: cover;
 
-    padding-left: 32px;
-    padding-right: 32px;
+    // padding-left: 32px;
+    // padding-right: 32px;
   }
 }
 
@@ -54,39 +199,39 @@
 
 .lib {
   @media screen and (max-width: 767px) {
-    width: 100%;
+    // width: 100%;
     height: 230px;
-    background-image: url('/src/img/bg/Rectangle_sd.jpg');
-    background-size: cover;
-    background-position: center center;
-    background-repeat: no-repeat;
+    // background-image: url('/src/img/bg/Rectangle_sd.jpg');
+    // background-size: cover;
+    // background-position: center center;
+    // background-repeat: no-repeat;
 
-    padding-left: 20px;
-    padding-right: 20px;
+    // padding-left: 20px;
+    // padding-right: 20px;
   }
 
   @media screen and (min-width: 768px) and (max-width: 1199px) {
-    width: 100%;
+    // width: 100%;
     height: 216px;
-    background-image: url('/src/img/bg/Rectangle_md.jpg');
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-size: cover;
+    // background-image: url('/src/img/bg/Rectangle_md.jpg');
+    // background-repeat: no-repeat;
+    // background-position: center center;
+    // background-size: cover;
 
-    padding-left: 32px;
-    padding-right: 32px;
+    // padding-left: 32px;
+    // padding-right: 32px;
   }
 
   @media screen and (min-width: 1200px) {
-    margin: 0 auto;
+    // margin: 0 auto;
     height: 216px;
-    background-image: url('/src/img/bg/Rectangle_ld.jpg');
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-size: cover;
+    // background-image: url('/src/img/bg/Rectangle_ld.jpg');
+    // background-repeat: no-repeat;
+    // background-position: center center;
+    // background-size: cover;
 
-    padding-left: 32px;
-    padding-right: 32px;
+    // padding-left: 32px;
+    // padding-right: 32px;
   }
 }
 
