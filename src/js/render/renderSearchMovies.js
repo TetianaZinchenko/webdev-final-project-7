@@ -30,7 +30,7 @@ function onSearch(event) {
   // searchQuery = event.target.searchQuery.value;
   const searchQuery = searchForm.searchQuery.value.trim();
 
-  console.log(searchQuery);
+  //   console.log(searchQuery);
 
   page = 1;
 
