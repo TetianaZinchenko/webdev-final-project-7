@@ -28,7 +28,10 @@ apiGenres()
 function onSearch(event) {
   event.preventDefault();
   // searchQuery = event.target.searchQuery.value;
-  searchQuery = searchForm.searchQuery.value.trim();
+  const searchQuery = searchForm.searchQuery.value.trim();
+
+  console.log(searchQuery);
+
   page = 1;
 
   if (!searchQuery) {
