@@ -113,10 +113,10 @@ function createMarkup(data) {
   about.innerHTML = `<p class="about-desc">
         ${data.overview}
       </p>`;
-  
 
-  
-  
+
+
+
 }
 
 //закрытие модалки и удаление слушателей
@@ -140,7 +140,6 @@ function checkClick(evt) {
 
 function removeEventListener() {
   document.removeEventListener('keydown', checkClick);
-  document.removeEventListener('keydown', closeTrailerByEsc);
   document.removeEventListener('click', checkClick);
   closeModalMovieBtn.removeEventListener('click', checkClickBtn);
 }
