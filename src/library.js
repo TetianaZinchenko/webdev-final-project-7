@@ -6,7 +6,7 @@ import './js/modal/team-modal';
 import onSwitch from './js/api/theme.js';
 
 import { movieLocalStorage } from './js/local-storage/local-storage.js';
-import { markupCardForMovie } from './js/render/render.js';
+import { markupCardMovie } from './js/render/render.js';
 
 const eventClick = 'click';
 const gallery = document.querySelector('.gallery-js');
@@ -78,7 +78,7 @@ function renderMoviesByTab(key) {
       movieList = movieLocalStorage.queueArray;
       break;
   }
-  let moviesElements = movieList.map(movie => markupCardForMovie(movie));
+  let moviesElements = movieList.map(movie => markupCardMovie(movie));
   gallery.innerHTML = moviesElements.join('');
 }
 
