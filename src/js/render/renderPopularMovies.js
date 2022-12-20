@@ -1,6 +1,7 @@
 import { fetchPop, fetchGenre } from '../api/fetchPopularMovies';
 import Pagination from 'tui-pagination';
 import 'tui-pagination/dist/tui-pagination.css';
+import { markupCardMovie } from './render.js';
 
 const popList = document.querySelector('.gallery-list');
 
@@ -24,9 +25,9 @@ fetchPop(page).then(onSuccess).catch(onError);
 function onSuccess(resp) {
   //рендер популярних фільмів
   //
+  
   const arr = resp.data.results;
-  let markup = arr.map(el => createMarkup(el)).join('');
-  popList.innerHTML = markup;
+  createMarkupArray(arr);
 
   //створює інстанс пагінації
   //
@@ -44,14 +45,18 @@ function onSuccess(resp) {
   pagination.on('beforeMove', evt => {
     const { page } = evt;
     fetchPop(page)
-      .then(resp => {
-        const arr = resp.data.results;
-        let markup = arr.map(el => createMarkup(el)).join('');
-        popList.innerHTML = markup;
-      })
+      .then(resp => createMarkupArray(resp.data.results))
       .catch(err => console.log(err));
   });
 }
+
+function createMarkupArray(movies){
+  let markup = movies.map(movie => {
+    movie.stringGenres = convertGenresToString(movie.genre_ids);
+    return markupCardMovie(movie);
+  }).join('');
+  popList.innerHTML = markup;
+} 
 
 //обробка помилки
 //
