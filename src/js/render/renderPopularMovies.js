@@ -55,13 +55,10 @@ function onSuccess(resp) {
 
 //обробка помилки
 //
-function onError(error) {
+export function onError(error) {
   console.error(error);
 
-  popList.insertAdjacentHTML(
-    'beforebegin',
-    `<p style="text-align: center; color: #545454; font-size: 18px;">Oops..something went wrong. Please try again later.</p>`
-  );
+  popList.innerHTML = `<p style="margin: 0 auto; text-align: center; color: #545454; font-size: 18px;">Oops..something went wrong. Please try again later.</p>`;
 }
 
 //перетворює в стрінгу масив жанрів що приходить у вигляді кодів, для вставки в макет
