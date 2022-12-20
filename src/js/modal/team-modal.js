@@ -9,11 +9,15 @@ teamModal.addEventListener('click', closeClick);
 export function openTeam(e) {
   e.preventDefault();
   teamModal.classList.remove('is-hidden-team');
+  document.body.style.maxHeight = '100vh';
+  document.body.style.overflow = 'hidden';
 }
 
 export function closeTeam(e) {
   e.preventDefault();
   teamModal.classList.add('is-hidden-team');
+  document.body.style.maxHeight = '';
+  document.body.style.overflow = '';
 }
 
 export function closeEscape(e) {
