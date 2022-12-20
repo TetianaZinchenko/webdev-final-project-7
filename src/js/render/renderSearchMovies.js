@@ -92,6 +92,18 @@ function convertGenresToString(genre_ids) {
   return genresName.join(', ');
 }
 
+function formatingPoster(poster_path, title) {
+  if (!poster_path) {
+    return `<img class="gallery-img" src="https://www.edu.goit.global/_next/image?url=https%3A%2F%2Fs3.eu-north-1.amazonaws.com%2Flms.goit.files%2F0618d8e0-2652-3e30-ae44-fd6ff17d55a1.png&w=3840&q=75" style="object-fit: contain;" alt="${title}" />`;
+  }
+  return `<picture>
+        <source srcset="https://image.tmdb.org/t/p/w500${poster_path}" media="(min-width: 1280px)" />
+        <source srcset="https://image.tmdb.org/t/p/w300${poster_path}" media="(min-width: 768px)" />
+        <source srcset="https://image.tmdb.org/t/p/w185${poster_path}" media="(max-width: 767px)" />
+        <img class="gallery-img" src="https://image.tmdb.org/t/p/w154${poster_path}" alt="no poster" style="text-align: left; color: #545454; font-size: 22px;"/>
+        </picture>`;
+}
+
 function createMarkup({
   poster_path,
   title,
@@ -101,14 +113,10 @@ function createMarkup({
   vote_average,
 }) {
   let genres = convertGenresToString(genre_ids);
+  let poster = formatingPoster(poster_path, title);
   return `<li class="gallery-list__item" data-id="${id}">
     <div class="gallery-thumb">
-        <picture>
-        <source srcset="https://image.tmdb.org/t/p/w500${poster_path}" media="(min-width: 1280px)" />
-        <source srcset="https://image.tmdb.org/t/p/w300${poster_path}" media="(min-width: 768px)" />
-        <source srcset="https://image.tmdb.org/t/p/w185${poster_path}" media="(max-width: 767px)" />
-        <img class="gallery-img" src="https://image.tmdb.org/t/p/w154${poster_path}" alt="no poster" style="text-align: left; color: #545454; font-size: 22px;"/>
-        </picture>
+        ${poster} 
     </div>
     <div class="movie-info">
         <h2 class="movie-info__name">${title}</h2>
