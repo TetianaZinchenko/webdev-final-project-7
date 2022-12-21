@@ -86,24 +86,34 @@ async function movieDatabaseApi(movieId) {
   }
 }
 
-// <picture>
-//   <source srcset="https://image.tmdb.org/t/p/w500${data.poster_path}" media="(min-width: 1280px)" />
-//   <source srcset="https://image.tmdb.org/t/p/w300${data.poster_path}" media="(max-width: 1279px)" />
-
-//   <img src="${posterPath}" />
-// </picture>
-
 const renderDetailInfo = document.querySelector('.render-detail-info');
 function createMarkup(data) {
-  const posterPath =
-    data.poster_path && data.poster_path !== null
-      ? `https://image.tmdb.org/t/p/w154${data.poster_path}`
-      : `https://www.edu.goit.global/_next/image?url=https%3A%2F%2Fs3.eu-north-1.amazonaws.com%2Flms.goit.files%2F0618d8e0-2652-3e30-ae44-fd6ff17d55a1.png&w=3840&q=75`;
+  console.log(data.poster_path);
+  let linkImgw500;
+  let linkImgw300;
+  let linkImgw154;
+
+  if (!data.poster_path) {
+    linkImgw500 =
+      'https://www.edu.goit.global/_next/image?url=https%3A%2F%2Fs3.eu-north-1.amazonaws.com%2Flms.goit.files%2F0618d8e0-2652-3e30-ae44-fd6ff17d55a1.png&w=3840&q=75';
+    linkImgw300 =
+      'https://www.edu.goit.global/_next/image?url=https%3A%2F%2Fs3.eu-north-1.amazonaws.com%2Flms.goit.files%2F0618d8e0-2652-3e30-ae44-fd6ff17d55a1.png&w=3840&q=75';
+    linkImgw154 =
+      'https://www.edu.goit.global/_next/image?url=https%3A%2F%2Fs3.eu-north-1.amazonaws.com%2Flms.goit.files%2F0618d8e0-2652-3e30-ae44-fd6ff17d55a1.png&w=3840&q=75';
+    console.log(linkImgw500);
+  } else {
+    linkImgw500 = `https://image.tmdb.org/t/p/w500${data.poster_path}`;
+    linkImgw300 = `https://image.tmdb.org/t/p/w300${data.poster_path}`;
+    linkImgw154 = `https://image.tmdb.org/t/p/w154${data.poster_path}`;
+  }
 
   posterImg.innerHTML = `
-        
-        <img class="poster-img" src="${posterPath}" alt="${data.title}">
-       
+        <picture>
+          <source srcset="${linkImgw500}" media="(min-width: 1280px)" />
+          <source srcset="${linkImgw300}" media="(max-width: 1279px)" />
+
+          <img class="poster-img" src="${linkImgw300}" alt="poster for movie ${data.original_title}" />
+        </picture>
 
         <button class="btn-trailer">
         <svg
@@ -125,7 +135,12 @@ function createMarkup(data) {
   title.innerHTML = `${data.title}`;
 
   const genresArr = data.genres;
-  const genres = genresArr.map(genre => genre.name).join(', ');
+  let genres;
+  if (!genresArr) {
+    genres = genresArr.map(genre => genre.name).join(', ');
+  } else {
+    genres = 'No information';
+  }
 
   renderDetailInfo.innerHTML = `<table class="detail-info-movie">
               <tr>
@@ -145,10 +160,15 @@ function createMarkup(data) {
                 <td>${genres}</td>
               </tr>
             </table>`;
-
-  about.innerHTML = `<p class="about-desc">
+  if (!data.overview) {
+    about.innerHTML = `<p class="about-desc">
+        No information about film
+      </p>`;
+  } else {
+    about.innerHTML = `<p class="about-desc">
         ${data.overview}
       </p>`;
+  }
 
   redrawButtonText(data.id);
 }
@@ -188,4 +208,5 @@ function removeEventListener() {
 
   document.body.style.maxHeight = '';
   document.body.style.overflow = '';
+  posterImg.innerHTML = '';
 }

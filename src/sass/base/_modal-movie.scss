@@ -117,9 +117,8 @@ transform: scale(1.06);
 }
 
 .thumb-movie-poster > picture > img {
-  height: 100%;
   width: 100%;
-  object-fit: cover;
+  object-fit: contain;
   border-radius: 5px;
 }
 
@@ -229,6 +228,7 @@ td {
   color: #000000;
   @media screen and (min-width: 780px) {
       max-height: 210px;
+      overflow: scrollxxx;
     }
 
   @media screen and (min-width: 1280px) {
