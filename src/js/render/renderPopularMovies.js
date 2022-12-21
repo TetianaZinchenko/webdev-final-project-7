@@ -26,7 +26,7 @@ fetchPop(page).then(onSuccess).catch(onError);
 function onSuccess(resp) {
   //рендер популярних фільмів
   //
-  
+
   const arr = resp.data.results;
   createMarkupArray(arr);
 
@@ -51,13 +51,15 @@ function onSuccess(resp) {
   });
 }
 
-function createMarkupArray(movies){
-  let markup = movies.map(movie => {
-    movie.stringGenres = convertGenresToString(movie.genre_ids);
-    return markupCardMovie(movie);
-  }).join('');
+function createMarkupArray(movies) {
+  let markup = movies
+    .map(movie => {
+      movie.stringGenres = convertGenresToString(movie.genre_ids);
+      return markupCardMovie(movie);
+    })
+    .join('');
   popList.innerHTML = markup;
-} 
+}
 
 //обробка помилки
 //
