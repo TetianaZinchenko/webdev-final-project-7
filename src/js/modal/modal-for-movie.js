@@ -85,15 +85,25 @@ async function movieDatabaseApi(movieId) {
     console.log(error);
   }
 }
+
+// <picture>
+//   <source srcset="https://image.tmdb.org/t/p/w500${data.poster_path}" media="(min-width: 1280px)" />
+//   <source srcset="https://image.tmdb.org/t/p/w300${data.poster_path}" media="(max-width: 1279px)" />
+
+//   <img src="${posterPath}" />
+// </picture>
+
 const renderDetailInfo = document.querySelector('.render-detail-info');
 function createMarkup(data) {
-  posterImg.innerHTML = `
-        <picture>
-          <source srcset="https://image.tmdb.org/t/p/w500${data.poster_path}" media="(min-width: 1280px)" />
-          <source srcset="https://image.tmdb.org/t/p/w300${data.poster_path}" media="(max-width: 1279px)" />
+  const posterPath =
+    data.poster_path && data.poster_path !== null
+      ? `https://image.tmdb.org/t/p/w154${data.poster_path}`
+      : `https://www.edu.goit.global/_next/image?url=https%3A%2F%2Fs3.eu-north-1.amazonaws.com%2Flms.goit.files%2F0618d8e0-2652-3e30-ae44-fd6ff17d55a1.png&w=3840&q=75`;
 
-          <img src="https://image.tmdb.org/t/p/w154${data.poster_path}" alt="poster for movie" />
-        </picture>
+  posterImg.innerHTML = `
+        
+        <img class="poster-img" src="${posterPath}" alt="${data.title}">
+       
 
         <button class="btn-trailer">
         <svg
