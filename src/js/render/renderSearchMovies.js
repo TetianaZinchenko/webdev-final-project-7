@@ -1,6 +1,5 @@
 //FT-10 Реалізувати пошук та відображення фільмів за ключовим словом
 import { apiService, apiGenres } from '../api/apiSearchMovies';
-// import { onError } from './renderPopularMovies';
 import Pagination from 'tui-pagination';
 
 const searchForm = document.querySelector('.search-form');
@@ -8,7 +7,6 @@ const createGallery = document.querySelector('.gallery-list');
 const spanForm = document.querySelector('.error-js');
 
 searchForm.addEventListener('submit', onSearch);
-searchForm.addEventListener('input', inputValue);
 
 let page = 1;
 let allGenres = [];
@@ -19,31 +17,24 @@ apiGenres()
   })
   .catch(err => console.log(err));
 
-function inputValue(event) {
-  const searchValue = event.target.value;
-  if (!searchValue) {
-    createGallery.innerHTML = '';
-    return;
-  }
-}
-
 function onSearch(event) {
   event.preventDefault();
   const searchQuery = event.target.searchQuery.value;
   page = 1;
-  // apiService(searchQuery, page).then(data => console.log(data));
+  if (!searchForm.searchQuery.value) {
+    spanForm.textContent =
+      'Search result not successful. Enter the correct movie name';
+    searchForm.searchQuery.value = null;
+    return;
+  }
   apiService(searchQuery, page).then(data => {
     if (!data.results.length) {
-      spanForm.insertAdjacentHTML(
-        'beforeend',
-        `Search result not successful. Enter the correct movie name and`
-      );
-      setTimeout(() => {
-        spanForm.textContent = ' ';
-        event.target.reset();
-      }, 1500);
+      spanForm.textContent =
+        'Search result not successful. Enter the correct movie name';
+      searchForm.searchQuery.value = null;
       return;
     } else {
+      spanForm.textContent = '';
       createGallery.innerHTML = '';
       createGallery.insertAdjacentHTML(
         'beforeend',
@@ -73,6 +64,8 @@ function onSearch(event) {
       });
     }
   });
+  searchForm.searchQuery.value = null;
+  return;
 }
 
 // onError();
