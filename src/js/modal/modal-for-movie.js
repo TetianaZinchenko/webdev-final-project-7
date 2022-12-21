@@ -1,6 +1,7 @@
 // данные для запроса
 import { renderTrailer, closeTrailerByEsc } from './trailer';
 import { movieLocalStorage } from '../local-storage/local-storage.js';
+import { modalSettings } from './modalSettings.js';
 
 const BASE_URL = 'https://api.themoviedb.org/3/movie/';
 const apiKey = 'f42f2f62d598d39d316744d8859de3e9';
@@ -19,6 +20,7 @@ const title = document.querySelector('.movie-title');
 const posterImg = document.querySelector('.thumb-movie-poster');
 
 // buttons functionality
+
 let selectedMovie = { id: 0 };
 let modalButtonsContainer = document.querySelector('.movie-btn-container');
 export let buttonAddWatch = modalButtonsContainer.children[0];
@@ -174,12 +176,29 @@ function createMarkup(data) {
 }
 
 export function redrawButtonText() {
-  buttonAddWatch.textContent = movieLocalStorage.watchedExists(selectedMovie.id)
-    ? 'remove from watched'
-    : 'add to watched';
-  buttonAddQueue.textContent = movieLocalStorage.queueExists(selectedMovie.id)
-    ? 'remove from queue'
-    : 'add to queue';
+  let isWatched = movieLocalStorage.watchedExists(selectedMovie.id);
+  let isQueue = movieLocalStorage.queueExists(selectedMovie.id);
+  
+  // config 
+  const settings = modalSettings.buttons;
+
+  // reset attributes
+  buttonAddQueue.removeAttribute(settings.disableAttribute);
+  buttonAddWatch.removeAttribute(settings.disableAttribute);
+
+  // button watched
+  buttonAddWatch.textContent = settings.watched.getText(isWatched);
+  buttonAddWatch.classList.toggle(settings.activeClass, isWatched);
+  if(isWatched){
+    buttonAddQueue.setAttribute(settings.disableAttribute, 1);
+  }
+  
+  // button queue
+  buttonAddQueue.textContent = modalSettings.buttons.queue.getText(isQueue);
+  buttonAddQueue.classList.toggle(settings.activeClass, isQueue);
+  if(isQueue){
+    buttonAddWatch.setAttribute(settings.disableAttribute, 1);
+  }
 }
 
 //закрытие модалки и удаление слушателей

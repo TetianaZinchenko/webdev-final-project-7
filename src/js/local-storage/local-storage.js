@@ -14,10 +14,12 @@ export let movieLocalStorage = {
         return array.findIndex(movie => movie.id == id);
     },
     addWatched : function(movie) {
-        if(!this.watchedExists(movie.id)){
-            this.watchedArray.push(movie);
-            localStorageSave(localStorageWatchKey, this.watchedArray);
-            return true;
+        if(!this.queueExists(movie.id)){
+            if(!this.watchedExists(movie.id)){
+                this.watchedArray.push(movie);
+                localStorageSave(localStorageWatchKey, this.watchedArray);
+                return true;  
+            }
         }
         return false;
     },
@@ -29,10 +31,12 @@ export let movieLocalStorage = {
         }
     },
     addQueue : function(movie) {
-        if(!this.queueExists(movie.id)){
-            this.queueArray.push(movie);
-            localStorageSave(localQueueWatchKey, this.queueArray);
-            return true;
+        if(!this.watchedExists(movie.id)){
+            if(!this.queueExists(movie.id)){
+                this.queueArray.push(movie);
+                localStorageSave(localQueueWatchKey, this.queueArray);
+                return true;
+            }
         }
         return false;
     },
