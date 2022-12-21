@@ -31,7 +31,7 @@ function onSearch(event) {
   event.preventDefault();
   const searchQuery = event.target.searchQuery.value;
   page = 1;
-  apiService(searchQuery, page).then(data => console.log(data));
+  // apiService(searchQuery, page).then(data => console.log(data));
   apiService(searchQuery, page).then(data => {
     if (!data.results.length) {
       spanForm.insertAdjacentHTML(

@@ -164,7 +164,7 @@ function checkClick(evt) {
     removeEventListener();
     return;
   }
-  console.log(evt.code);
+  // console.log(evt.code);
   if (evt.code === 'Escape') {
     backdrop.classList.toggle('modal—movie-is-hidden');
     removeEventListener();
