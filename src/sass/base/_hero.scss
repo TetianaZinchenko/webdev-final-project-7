@@ -78,3 +78,14 @@
   background-color: #ff6b01;
   color: #ffffff;
 }
+
+.tui-pagination .tui-first-child.tui-is-selected {
+  border-left: 1px solid #ff6b01;
+}
+
+.tui-pagination .tui-page-btn {
+  @media screen and (max-width: 320px) {
+    width: 22px;
+    font-size: 9px;
+  }
+}

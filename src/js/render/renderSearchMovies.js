@@ -1,6 +1,6 @@
 //FT-10 Реалізувати пошук та відображення фільмів за ключовим словом
 import { apiService, apiGenres } from '../api/apiSearchMovies';
-import { onError } from './renderPopularMovies';
+// import { onError } from './renderPopularMovies';
 import Pagination from 'tui-pagination';
 
 const searchForm = document.querySelector('.search-form');
