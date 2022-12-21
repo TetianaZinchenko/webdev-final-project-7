@@ -23,14 +23,17 @@
   }
 }
 
-.tui-pagination {
-  margin-top: 40px;
-  margin-bottom: 0;
+// .tui-pagination {
+//   margin-top: 40px;
+//   margin-bottom: 0;
 
-  @media screen and (min-width: 768px) {
-    margin-top: 60px;
-  }
-}
+//   @media screen and (min-width: 768px) {
+//     margin-top: 60px;
+//   }
+// }
+
+
+
 // .pop-list {
 //   display: flex;
 //   flex-wrap: wrap;
@@ -62,30 +65,30 @@
 //   }
 // }
 
-.tui-pagination .tui-is-selected,
-.tui-pagination strong {
-  background: #ff6b01;
-  border-color: #ff6b01;
-}
+// .tui-pagination .tui-is-selected,
+// .tui-pagination strong {
+//   background: #ff6b01;
+//   border-color: #ff6b01;
+// }
 
-.tui-pagination .tui-is-selected:hover,
-.tui-pagination .tui-is-selected:focus {
-  background-color: #ff6b01;
-}
+// .tui-pagination .tui-is-selected:hover,
+// .tui-pagination .tui-is-selected:focus {
+//   background-color: #ff6b01;
+// }
 
-.tui-pagination .tui-page-btn:hover,
-.tui-pagination .tui-page-btn:focus {
-  background-color: #ff6b01;
-  color: #ffffff;
-}
+// .tui-pagination .tui-page-btn:hover,
+// .tui-pagination .tui-page-btn:focus {
+//   background-color: #ff6b01;
+//   color: #ffffff;
+// }
 
-.tui-pagination .tui-first-child.tui-is-selected {
-  border-left: 1px solid #ff6b01;
-}
+// .tui-pagination .tui-first-child.tui-is-selected {
+//   border-left: 1px solid #ff6b01;
+// }
 
-.tui-pagination .tui-page-btn {
-  @media screen and (max-width: 320px) {
-    width: 22px;
-    font-size: 9px;
-  }
-}
+// .tui-pagination .tui-page-btn {
+//   @media screen and (max-width: 320px) {
+//     width: 22px;
+//     font-size: 9px;
+//   }
+// }

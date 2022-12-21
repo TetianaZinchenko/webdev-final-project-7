@@ -80,9 +80,9 @@ function convertGenresToString(genre_ids) {
   }
   if (genresName.length > 2) {
     genresName = genresName.slice(0, 2);
-    genresName.push('Other');
+    genresName.push;
   } else if (genresName.length < 1) {
-    genresName.push('Other');
+    genresName.push;
   }
   return genresName.join(', ');
 }

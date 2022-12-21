@@ -1,20 +1,5 @@
-// .test-card {
-//   background-color: #ff6b01;
-//   @media screen and (min-width: 320px) {
-//     width: 280px;
-//     height: 398px;
-//   }
 
-//   @media screen and (min-width: 768px) {
-//     width: 336px;
-//     height: 445px;
-//   }
 
-//   @media screen and (min-width: 1280px) {
-//     width: 336px;
-//     height: 445px;
-//   }
-// }
 
 .films-container {
   // width: 100%;
@@ -224,4 +209,21 @@
   flex-grow: 1;
   padding-top: 8px;
   width: 200;
+}
+.clear-list{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+}
+.clear-list__title{
+  color: #ff6b01;
+  font-size: 35px;
+  margin-bottom: 10px;
+}
+
+.clear-list__text{
+  font-size: 22px;
+  margin-bottom: 15px;
 }
