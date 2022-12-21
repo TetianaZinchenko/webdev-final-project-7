@@ -86,22 +86,6 @@ async function movieDatabaseApi(movieId) {
   }
 }
 
-// <picture>
-//   <source srcset="https://image.tmdb.org/t/p/w500${data.poster_path}" media="(min-width: 1280px)" />
-//   <source srcset="https://image.tmdb.org/t/p/w300${data.poster_path}" media="(max-width: 1279px)" />
-
-//   <img src="${posterPath}" />
-// </picture>
-
-//  const posterPath =
-//     data.poster_path && data.poster_path !== null
-//       ? `https://image.tmdb.org/t/p/w154${data.poster_path}`
-//       : `https://www.edu.goit.global/_next/image?url=https%3A%2F%2Fs3.eu-north-1.amazonaws.com%2Flms.goit.files%2F0618d8e0-2652-3e30-ae44-fd6ff17d55a1.png&w=3840&q=75`;
-
-//   posterImg.innerHTML = `
-
-//         <img class="poster-img" src="${posterPath}" alt="${data.title}">
-
 const renderDetailInfo = document.querySelector('.render-detail-info');
 function createMarkup(data) {
   console.log(data.poster_path);
@@ -128,12 +112,8 @@ function createMarkup(data) {
           <source srcset="${linkImgw500}" media="(min-width: 1280px)" />
           <source srcset="${linkImgw300}" media="(max-width: 1279px)" />
 
-          <img src="${linkImgw300}" alt="poster for movie ${data.original_title}" />
+          <img class="poster-img" src="${linkImgw300}" alt="poster for movie ${data.original_title}" />
         </picture>
-
- 
-       
-
 
         <button class="btn-trailer">
         <svg
