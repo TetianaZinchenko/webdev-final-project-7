@@ -104,6 +104,13 @@ function formatingPoster(poster_path, title) {
         </picture>`;
 }
 
+function formatingYear(release_date) {
+  if (!release_date) {
+    return `----`;
+  }
+  return `${release_date.substr(0, 4)}`;
+}
+
 function createMarkup({
   poster_path,
   title,
@@ -114,6 +121,8 @@ function createMarkup({
 }) {
   let genres = convertGenresToString(genre_ids);
   let poster = formatingPoster(poster_path, title);
+  let year = formatingYear(release_date);
+
   return `<li class="gallery-list__item" data-id="${id}">
     <div class="gallery-thumb">
         ${poster} 
@@ -121,9 +130,7 @@ function createMarkup({
     <div class="movie-info">
         <h2 class="movie-info__name">${title}</h2>
         <p class="movie-info__about">
-        ${genres} | ${new Date(
-    release_date
-  ).getFullYear()} <span class="movie-info__rate">${vote_average.toFixed(
+        ${genres} | ${year} <span class="movie-info__rate">${vote_average.toFixed(
     1
   )}</span>
         </p>
