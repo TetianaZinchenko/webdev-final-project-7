@@ -11,7 +11,7 @@ searchForm.addEventListener('submit', onSearch);
 searchForm.addEventListener('input', inputValue);
 
 let page = 1;
-// let allGenres = [];
+let allGenres = [];
 
 apiGenres()
   .then(data => {
