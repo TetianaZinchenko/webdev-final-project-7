@@ -9,6 +9,13 @@ const queueTab = document.querySelector('#lib-queue-tab');
 
 let selectedTab = 'watched';
 
+const clearLibrary = `<div class="clear-list">
+    <h3 class="clear-list__title">Oops...</h3>
+    <p class="clear-list__text">Your movie list is empty!</p>
+   <button onclick="window.location.href='index.html'" class="lib__btn btn-active" type="button">Back to Homepage</button></a>
+    </div>`;
+gallery.innerHTML = clearLibrary;
+
 buttonAddWatch.addEventListener(eventClick, () => renderByTab(selectedTab));
 buttonAddQueue.addEventListener(eventClick, () => renderByTab(selectedTab));
 
@@ -26,10 +33,15 @@ function renderByTab(key) {
       movieList = movieLocalStorage.queueArray;
       break;
   }
+
   let moviesElements = movieList.map(movie => {
     movie.stringGenres = movie.genres.map(genre => genre.name).join(', ');
     return markupCardMovie(movie);
   });
+  if (moviesElements.length === 0) {
+    gallery.innerHTML = clearLibrary;
+    return;
+  }
   gallery.innerHTML = moviesElements.join('');
 }
 
