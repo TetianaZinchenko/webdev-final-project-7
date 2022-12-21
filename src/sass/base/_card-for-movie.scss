@@ -1,3 +1,25 @@
+.poster-img {
+  display: block;
+  object-fit: contain;
+  overflow: hidden;
+  border-radius: 5px;
+  // min-width: 240px;
+  width: 240px;
+  height: 357px;
+  overflow: hidden;
+  transform: scale(1, 1);
+
+  @media screen and (min-width: (768px)) {
+    min-width: 264px;
+    height: 374px;
+  }
+
+  @media screen and (min-width: (1280px)) {
+    min-width: 375px;
+    height: 478px;
+  }
+}
+
 .gallery-list {
   display: flex;
 
